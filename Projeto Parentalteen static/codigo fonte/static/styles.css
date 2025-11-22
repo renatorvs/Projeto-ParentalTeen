@@ -1,0 +1,38 @@
+/* Estilo inspirado em https://parentcoachingbrasil.com.br/ */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1530099486328-e021101a494a?q=80&w=1974&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    padding: 100px 0;
+    margin-bottom: 2rem;
+}
+
+.hero-section h1 {
+    font-weight: 700;
+}
+
+.btn-primary {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+.btn-primary:hover {
+    background-color: #5a3d9a;
+    border-color: #5a3d9a;
+}
+
+.card-header {
+    background-color: #6f42c1;
+    color: white;
+}
+
+footer {
+    background-color: #343a40;
+    color: white;
+}

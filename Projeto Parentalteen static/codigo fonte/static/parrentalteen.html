@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parental Teen | Coaching Regina Caires</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts (Lato e Merriweather para um visual elegante e profissional) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#E0F2F1', // Teal bem claro
+                            DEFAULT: '#009688', // Teal principal (cor de confiança/saúde)
+                            dark: '#00695C', // Teal escuro
+                            accent: '#FF7043', // Laranja suave para destaque (do logo Parental Teen)
+                            teal_dark: '#046B6B', // Do ciclo
+                            teal_light: '#65D2C2', // Do ciclo
+                            gray_cycle: '#A1A1A1', // Do ciclo
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animação suave para o menu mobile */
+        .mobile-menu {
+            transition: max-height 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .mobile-menu.open {
+            max-height: 300px;
+        }
+
+        /* Estilo para o logo "Parental Teen" no nav/footer para replicar a imagem */
+        .logo-parental-teen .parental {
+            font-family: 'Lato', sans-serif; /* Pode ajustar conforme a fonte exata da imagem, se tiver */
+            font-weight: 700;
+            color: #FF7043; /* Cor laranja do logo */
+            margin-right: 2px;
+        }
+        .logo-parental-teen .teen {
+            font-family: 'Merriweather', serif; /* Pode ajustar */
+            font-weight: 400; /* Regular */
+            color: #4A4A4A; /* Cinza escuro do logo */
+            font-size: 0.9em; /* Ajuste para parecer "menor" */
+            line-height: 1; /* Alinha melhor */
+        }
+
+        /* Estilização para o ciclo no SVG */
+        .circle-text {
+            font-family: 'Permanent Marker', cursive; /* Exemplo de fonte manuscrita, pode ajustar */
+            font-size: 1.2rem;
+            fill: #4A4A4A; /* Cor do texto */
+        }
+        .circle-text-parental {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            fill: #FF7043;
+        }
+        .circle-text-teen {
+            font-family: 'Merriweather', serif;
+            font-weight: 400;
+            fill: #4A4A4A;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-600 antialiased bg-gray-50">
+
+    <!-- Navigation -->
+     <nav class="bg-white shadow-md fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <a href="#" class="flex-shrink-0 flex items-center gap-2 logo-parental-teen group">
+                        <!-- Logo SVG Minimalista (Apenas Formas) -->
+                        <div class="w-10 h-10 relative transform group-hover:rotate-180 transition-transform duration-700 ease-in-out">
+                            <svg viewBox="0 0 100 100" class="w-full h-full">
+                                <!-- Segment 1 (Teal Dark) -->
+                                <path d="M 50 10 A 40 40 0 0 1 84.64 30 L 75.98 35 A 30 30 0 0 0 50 20 Z" fill="#046B6B"/>
+                                <!-- Segment 2 (Teal Light) -->
+                                <path d="M 84.64 30 A 40 40 0 0 1 84.64 70 L 75.98 65 A 30 30 0 0 0 75.98 35 Z" fill="#65D2C2"/>
+                                <!-- Segment 3 (Orange) -->
+                                <path d="M 84.64 70 A 40 40 0 0 1 50 90 L 50 80 A 30 30 0 0 0 75.98 65 Z" fill="#FF7043"/>
+                                <!-- Segment 4 (Gray) -->
+                                <path d="M 50 90 A 40 40 0 0 1 15.36 70 L 24.02 65 A 30 30 0 0 0 50 80 Z" fill="#A1A1A1"/>
+                                 <!-- Segment 5 (Teal Dark - Left Side to complete circle roughly) -->
+                                <path d="M 15.36 70 A 40 40 0 0 1 15.36 30 L 24.02 35 A 30 30 0 0 0 24.02 65 Z" fill="#046B6B" opacity="0.5"/> <!-- Variation or repeat color -->
+                                 <!-- Closing the loop visual logic simplified for icon -->
+                                 <circle cx="50" cy="50" r="15" fill="white"/>
+                            </svg>
+                        </div>
+                        <!-- Texto do Logo -->
+                        <div class="flex flex-col">
+                             <div class="flex items-baseline">
+                                <span class="parental text-2xl">Parental</span><span class="teen text-xl">Teen</span>
+                             </div>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-brand font-medium transition-colors">Início</a>
+                    <a href="#sobre" class="text-gray-600 hover:text-brand font-medium transition-colors">Sobre</a>
+                    <a href="#beneficios" class="text-gray-600 hover:text-brand font-medium transition-colors">Benefícios</a>
+                    <a href="#videos" class="text-gray-600 hover:text-brand font-medium transition-colors">Vídeos</a>
+                    <a href="#contato" class="bg-brand hover:bg-brand-dark text-white px-5 py-2.5 rounded-full font-medium transition-colors shadow-lg transform hover:-translate-y-0.5">
+                        Agendar Sessão
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Links -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white border-t border-gray-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand hover:bg-gray-50">Início</a>
+                <a href="#sobre" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand hover:bg-gray-50">Sobre</a>
+                <a href="#beneficios" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand hover:bg-gray-50">Benefícios</a>
+                <a href="#videos" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-brand hover:bg-gray-50">Vídeos</a>
+                <a href="#contato" class="block px-3 py-2 mt-4 rounded-md text-base font-bold text-brand hover:bg-brand-light">Agendar Sessão</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-b from-brand-light/30 to-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left space-y-6">
+                    <h1 class="text-4xl lg:text-6xl font-serif font-bold text-gray-800 leading-tight">
+                         Conecte-se e compreenda, para prosperar com seu <span class="text-brand">adolescente</span>.
+
+                    </h1>
+                    <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Um programa de coaching exclusivo para pais de adolescentes, ajudando a construir um relacionamento mais forte, com comunicação eficaz e apoio ao desenvolvimento.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                        <a href="#contato" class="bg-brand hover:bg-brand-dark text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl transition-all transform hover:-translate-y-1">
+                            Quero Transformar Nossa Relação
+                        </a>
+                        <a href="#ciclo-teen" class="bg-white border-2 border-brand text-brand hover:bg-brand-light px-8 py-4 rounded-full font-bold text-lg shadow-md transition-all">
+                            Conheça o Ciclo
+                        </a>
+                    </div>
+                    <div class="pt-4 flex items-center justify-center lg:justify-start gap-2 text-sm text-gray-500">
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <span>Mais de 600 famílias teen atendidas</span>
+                    </div>
+                </div>
+                <div class="relative">
+                    <!-- Imagem SVG do UnDraw: Adolescentes -->
+                 <img src="familia.jpg" 
+                         alt="Pais e adolescentes conectados" 
+                         class="w-full h-auto drop-shadow-xl transform hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre a Coach Section (ATUALIZADA) -->
+    <section id="sobre" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="p-10 lg:p-16 flex flex-col justify-center order-2 lg:order-1">
+                        <span class="text-brand font-bold tracking-widest uppercase text-sm mb-2">Sobre a Terapeuta</span>
+                        <h2 class="text-3xl lg:text-4xl font-serif font-bold text-gray-800 mb-6">Regina Caires</h2>
+                        
+                        <div class="space-y-4 text-gray-600 text-lg leading-relaxed">
+                            <p>
+                                <span class="font-bold text-brand-dark">Terapeuta Parental Teen</span> e graduanda em <span class="font-bold">Psicologia</span>, com formação especializada em <span class="font-bold">Terapia Cognitivo-Comportamental</span> voltada para o universo adolescente.
+                            </p>
+                            <p>
+                                Com uma trajetória sólida de mais de <span class="font-bold">20 anos na liderança e orientação de jovens</span>, dedico minha carreira a ajudar famílias a construir laços mais fortes e saudáveis.
+                            </p>
+                            <p>
+                                Meu trabalho foca em fortalecer vínculos familiares, aprimorar a comunicação entre pais e filhos e promover um desenvolvimento emocional equilibrado e saudável para os adolescentes.
+                            </p>
+                        </div>
+
+                        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                            <a href="mailto:reginagodoycaires@hotmail.com" class="flex items-center gap-2 text-gray-600 hover:text-brand transition-colors">
+                                <i class="fa-solid fa-envelope text-xl text-brand"></i>
+                                <span>reginagodoycaires@hotmail.com</span>
+                            </a>
+                             <a href="https://wa.me/5511979933193" class="flex items-center gap-2 text-gray-600 hover:text-brand transition-colors">
+                                <i class="fa-brands fa-whatsapp text-xl text-brand"></i>
+                                <span>(11)97993-3193</span>
+                            </a>
+                        </div>
+
+                        <div class="mt-6 flex items-center gap-6">
+                            <a href="https://instagram.com/reginagodoy" target="_blank" class="text-gray-400 hover:text-brand-accent transition-colors text-3xl" title="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://youtube.com/@eivocecomreginagodoy" target="_blank" class="text-gray-400 hover:text-brand-accent transition-colors text-3xl" title="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                             <!-- Skype Icon (Simulação para 'regina:reginagodoy') -->
+                             <a href="skype:reginagodoy?chat" class="text-gray-400 hover:text-brand-accent transition-colors text-3xl" title="Skype">
+                                <i class="fa-brands fa-skype"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="bg-brand-light/20 relative min-h-[400px] flex items-center justify-center p-10 order-1 lg:order-2">
+                         <!-- Foto da Regina Caires (Coloquei a imagem que você enviou aqui) -->
+                         <!-- Nota: Em um ambiente real, você usaria o caminho relativo correto para a imagem salva -->
+                        <img src="tia_re.png" 
+                             alt="Regina Caires - Terapeuta Parental Teen" 
+                             class="w-72 h-72 lg:w-96 lg:h-96 rounded-full border-8 border-white shadow-2xl object-cover object-top transform hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios Section (ATUALIZADA COM CURRÍCULO/IMAGEM 1) -->
+    <section id="beneficios" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-serif font-bold text-gray-800 mb-4">Por que escolher o Parent Coaching Teen?</h2>
+                <div class="w-24 h-1 bg-brand mx-auto rounded-full"></div>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                    Resultados comprovados que transformam a dinâmica familiar e preparam seu filho para o futuro.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
+                <!-- Card 1: Bem-Estar -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-brand-teal_dark flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-5xl font-bold text-brand-teal_dark mb-2">87%</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Maior Bem-Estar</h3>
+                    <p class="text-gray-600 text-sm mb-4">Melhora significativa na qualidade de vida emocional.</p>
+                    <ul class="text-gray-600 text-sm text-left space-y-2 w-full border-t border-gray-100 pt-4">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal_dark mr-2 mt-1"></i>Gerenciar melhor o estresse.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal_dark mr-2 mt-1"></i>Aprender a ter equilíbrio de vida.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal_dark mr-2 mt-1"></i>Descobrir estilos pessoais.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal_dark mr-2 mt-1"></i>Acesso a recursos internos.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: Confiança -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-brand-accent flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300 transform scale-105 z-10">
+                    <div class="text-5xl font-bold text-brand-accent mb-2">89%</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Aumento na Confiança</h3>
+                    <p class="text-gray-600 text-sm mb-4">Jovens mais seguros de si e de suas capacidades.</p>
+                    <ul class="text-gray-600 text-sm text-left space-y-2 w-full border-t border-gray-100 pt-4">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-accent mr-2 mt-1"></i>Descobrir pontos fortes e talentos.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-accent mr-2 mt-1"></i>Reconhecer padrões de comportamento.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-accent mr-2 mt-1"></i>Desenvolver novas formas de se relacionar.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Metas e Rotina -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-brand-teal_light flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300">
+                    <div class="text-5xl font-bold text-brand-teal_light mb-2">92%</div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Metas e Rotinas</h3>
+                    <p class="text-gray-600 text-sm mb-4">Organização para a vida escolar e pessoal.</p>
+                    <ul class="text-gray-600 text-sm text-left space-y-2 w-full border-t border-gray-100 pt-4">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal_light mr-2 mt-1"></i>Gerenciar trabalho escolar e vida pessoal.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal_light mr-2 mt-1"></i>Definir prioridades e manter o foco.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brand-teal_light mr-2 mt-1"></i>Criar planos de ação para objetivos.</li>
+                    </ul>
+                </div>
+            </div>
+             
+             <!-- Citação Inspiradora -->
+            <div class="bg-brand-light/50 rounded-xl p-8 text-center max-w-4xl mx-auto">
+                <i class="fa-solid fa-quote-left text-3xl text-brand-dark/30 mb-4 block"></i>
+                <p class="text-xl text-gray-700 italic font-serif mb-4">
+                    "A adolescência é um segundo parto: nascer da família para andar sozinho na sociedade."
+                </p>
+                <span class="font-bold text-brand-dark">– Içami Tiba</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vídeos Section (NOVA SEÇÃO) -->
+    <section id="videos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-serif font-bold text-gray-800 mb-4">Conteúdo em Vídeo</h2>
+                <div class="w-24 h-1 bg-brand mx-auto rounded-full"></div>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+                    Acompanhe meu canal no YouTube para dicas, reflexões e orientações sobre a parentalidade na adolescência.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Video Fake 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow group cursor-pointer">
+                    <div class="relative h-48 bg-gray-200 flex items-center justify-center group-hover:bg-gray-300 transition-colors">
+                        <i class="fa-brands fa-youtube text-5xl text-red-600 opacity-80 group-hover:opacity-100 transition-opacity"></i>
+                        <div class="absolute inset-0 bg-black/10"></div> <!-- Overlay -->
+                        <!-- Placeholder image simulating video thumbnail -->
+                         <img src="https://raw.githubusercontent.com/Undraw/undraw-illustrations/master/svg/undraw_video_call_kxyp.svg" class="absolute inset-0 w-full h-full object-cover opacity-50" alt="Thumb">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-2 group-hover:text-brand transition-colors">Como lidar com as mudanças de humor?</h3>
+                        <p class="text-sm text-gray-500 mb-4">Entenda os processos biológicos e emocionais por trás das oscilações de humor na adolescência.</p>
+                        <span class="text-brand text-sm font-bold uppercase tracking-wide">Assistir Agora <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </div>
+
+                <!-- Video Fake 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow group cursor-pointer">
+                    <div class="relative h-48 bg-gray-200 flex items-center justify-center group-hover:bg-gray-300 transition-colors">
+                        <i class="fa-brands fa-youtube text-5xl text-red-600 opacity-80 group-hover:opacity-100 transition-opacity"></i>
+                         <div class="absolute inset-0 bg-black/10"></div>
+                         <img src="https://raw.githubusercontent.com/Undraw/undraw-illustrations/master/svg/undraw_online_video_ivvy.svg" class="absolute inset-0 w-full h-full object-cover opacity-50" alt="Thumb">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-2 group-hover:text-brand transition-colors">Comunicação Não-Violenta com Teens</h3>
+                        <p class="text-sm text-gray-500 mb-4">Técnicas práticas para transformar discussões em conversas construtivas e empáticas.</p>
+                        <span class="text-brand text-sm font-bold uppercase tracking-wide">Assistir Agora <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </div>
+
+                <!-- Video Fake 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow group cursor-pointer">
+                    <div class="relative h-48 bg-gray-200 flex items-center justify-center group-hover:bg-gray-300 transition-colors">
+                        <i class="fa-brands fa-youtube text-5xl text-red-600 opacity-80 group-hover:opacity-100 transition-opacity"></i>
+                         <div class="absolute inset-0 bg-black/10"></div>
+                         <img src="https://raw.githubusercontent.com/Undraw/undraw-illustrations/master/svg/undraw_influencer_j-8-u4.svg" class="absolute inset-0 w-full h-full object-cover opacity-50" alt="Thumb">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-gray-800 mb-2 group-hover:text-brand transition-colors">Limites e Autonomia: O Equilíbrio</h3>
+                        <p class="text-sm text-gray-500 mb-4">Até onde soltar a corda? Descubra como negociar liberdades com responsabilidade.</p>
+                        <span class="text-brand text-sm font-bold uppercase tracking-wide">Assistir Agora <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://youtube.com/@eivocecomreginagodoy" target="_blank" class="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-bold transition-colors shadow-md">
+                    <i class="fa-brands fa-youtube text-xl"></i>
+                    Ver Canal Completo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metodologia Section (O Ciclo Parental Teen) --><section id="ciclo-teen" class="py-20 bg-brand-light/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1">
+                     <!-- SVG do Ciclo da Image 2 --><div class="w-full max-w-md mx-auto">
+                        <svg width="100%" height="100%" viewBox="0 0 300 300">
+                            <!-- Outer Ring - Placeholder --><path d="M 150 150 m 0 -130 a 130 130 0 0 1 0 260 a 130 130 0 0 1 0 -260" fill="none" stroke="#E0E0E0" stroke-width="10" />
+
+                            <!-- Segment 1 (Teal Dark) --><path d="M 150 20 A 130 130 0 0 1 270.83 176.47 L 253.33 166.86 A 110 110 0 0 0 150 40 Z" fill="#046B6B"/>
+                            
+                            <!-- Segment 2 (Teal Light) --><path d="M 270.83 176.47 A 130 130 0 0 1 129.17 270.83 L 140.75 253.33 A 110 110 0 0 0 253.33 166.86 Z" fill="#65D2C2"/>
+                            
+                            <!-- Segment 3 (Orange) --><path d="M 129.17 270.83 A 130 130 0 0 1 29.17 123.53 L 46.67 133.14 A 110 110 0 0 0 140.75 253.33 Z" fill="#FF7043"/>
+                            
+                            <!-- Segment 4 (Gray) --><path d="M 29.17 123.53 A 130 130 0 0 1 150 20 L 150 40 A 110 110 0 0 0 46.67 133.14 Z" fill="#A1A1A1"/>
+                            
+                            <!-- Inner Circle --><circle cx="150" cy="150" r="80" fill="#FFFFFF"/>
+
+                            <!-- Text "Um ciclo de crescimento entre pais e filhos." (Simulação) --><text x="150" y="50" text-anchor="middle" dominant-baseline="middle" class="text-gray-700" style="font-family: 'Merriweather', serif; font-size: 14px; transform: rotate(-10deg) translate(0, 0);"> 
+                                <tspan x="150" y="30" text-anchor="middle"></tspan> 
+                                <tspan x="150" y="48" text-anchor="middle"></tspan>
+                            </text>
+
+                            <!-- Logo "Parental Teen" no centro --><text x="150" y="140" text-anchor="middle" dominant-baseline="middle">
+                                <tspan class="circle-text-parental" font-size="24px" font-weight="bold">Parental</tspan>
+                            </text>
+                            <text x="150" y="165" text-anchor="middle" dominant-baseline="middle">
+                                <tspan class="circle-text-teen" font-size="20px" font-weight="normal">Teen</tspan>
+                            </text>
+                        </svg>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-3xl lg:text-4xl font-serif font-bold text-gray-800 mb-6">
+                        O Ciclo <span class="text-brand">Parental Teen</span>
+						
+                    </h2>
+					<h3 class="text-3xl lg:text-4xl font-serif font-bold text-gray-800 mb-6" >Um ciclo de crescimento entre <span class="text-brand"> pais e filhos</span>.</h3>
+					
+					
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Nosso programa é estruturado em um ciclo contínuo de crescimento e adaptação. Não é uma solução rápida, mas um caminho para construir um relacionamento duradouro e saudável com seu adolescente.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-seedling text-brand-teal_dark text-xl mt-1"></i>
+                            <span class="text-gray-700">Compreensão e Conexão.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-hands-holding text-brand-teal_light text-xl mt-1"></i>
+                            <span class="text-gray-700">Apoio e Autonomia.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-arrows-rotate text-brand-accent text-xl mt-1"></i>
+                            <span class="text-gray-700">Adaptação e Crescimento Mútuo.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-tree text-brand-gray_cycle text-xl mt-1"></i>
+                            <span class="text-gray-700">Colaboração e Futuro.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contato Section (ATUALIZADA COM SELECT E PLACEHOLDERS) -->
+    <section id="contato" class="py-20 bg-brand-dark text-white relative overflow-hidden">
+        <!-- Pattern Background Overlay --><div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 20px 20px;"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="bg-white text-gray-800 rounded-3xl shadow-2xl overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2">
+                    <div class="p-8 md:p-12 bg-brand text-white flex flex-col justify-center">
+                        <h3 class="text-3xl font-serif font-bold mb-4">Vamos conversar?</h3>
+                        <p class="mb-6 text-brand-light">Agende uma sessão de descoberta gratuita de 30 minutos. Vamos entender seu momento e como posso te ajudar.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-envelope"></i>
+                                <span>reginagodoycaires@hotmail.com</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>(11) 9 7993 - 3193</span>
+                            </div>
+                        </div>
+                    </div>
+                
+			
+					
+                    <div class="p-8 md:p-12 bg-white">
+                        <form action="/subscribe" method="post" class="space-y-4" onsubmit="event.preventDefault(); alert('Obrigado! Entraremos em contato em breve.');">
+                            <div>
+                                <label for="nome" class="block text-sm font-bold text-gray-700 mb-1">Nome</label>
+                                <input type="text" id="nome" name="nome" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition-all" placeholder="Seu nome">
+                            </div>
+                            <div>
+                                <label for="email"  class="block text-sm font-bold text-gray-700 mb-1">E-mail</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition-all" placeholder="seu@email.com">
+                            </div>
+							  <div>
+                                <label for="Sobrenome" class="block text-sm font-bold text-gray-700 mb-1">Sobrenome</label>
+                                <input type="text" id="sobrenome" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition-all" placeholder="seu@email.com">
+                            </div>
+							  <div>
+                                <label for="telefone" class="block text-sm font-bold text-gray-700 mb-1">Telefone</label>
+                                <input type="tel" id="telefone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition-all" placeholder="seu@email.com">
+                            </div>
+							  <div>
+                                <label for="data_nascimento" class="block text-sm font-bold text-gray-700 mb-1">Data de Nascimento</label>
+                                <input type="date" id="data_nascimento" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition-all" placeholder="seu@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">Principal Desafio com Adolescente</label>
+                                <select value="desafio" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand focus:border-transparent outline-none transition-all">
+                                    <option>Selecione...</option>
+                                    <option>Comunicação e conflitos</option>
+                                    <option>Autonomia e limites</option>
+                                    <option>Questões escolares/acadêmicas</option>
+                                    <option>Gerenciamento de emoções</option>
+                                    <option>Outros</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-accent hover:bg-orange-600 text-white font-bold py-3 rounded-lg shadow-md transition-colors">
+                                Solicitar Contato
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer --><footer class="bg-gray-900 text-gray-300 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="#" class="flex items-center gap-1 mb-4 logo-parental-teen">
+                        <span class="parental text-xl text-brand-accent">Parental</span><span class="teen text-lg text-gray-400">Teen</span>
+                    </a>
+                    <p class="text-sm text-gray-400 max-w-xs leading-relaxed mb-4">
+                        Apoiando famílias na construção de laços afetivos seguros, respeitosos e duradouros através do coaching parental consciente.
+                    </p>
+                    <!-- Redes Sociais no Footer -->
+                    <div class="flex gap-4">
+                        <a href="https://instagram.com/reginagodoy" target="_blank" class="text-gray-400 hover:text-brand-accent transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                        <a href="https://youtube.com/@eivocecomreginagodoy" target="_blank" class="text-gray-400 hover:text-brand-accent transition-colors"><i class="fa-brands fa-youtube text-xl"></i></a>
+                         <a href="mailto:reginagodoycaires@hotmail.com" class="text-gray-400 hover:text-brand-accent transition-colors"><i class="fa-solid fa-envelope text-xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-brand transition-colors">Início</a></li>
+                        <li><a href="#sobre" class="hover:text-brand transition-colors">Sobre</a></li>
+                        <li><a href="#ciclo-teen" class="hover:text-brand transition-colors">Metodologia</a></li>
+                        <li><a href="#videos" class="hover:text-brand transition-colors">Vídeos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-brand transition-colors">Política de Privacidade</a></li>
+                        <li><a href="#" class="hover:text-brand transition-colors">Termos de Uso</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
+                &copy; 2025 Parental Teen. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+   <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('open');
+        });
+
+        // Close mobile menu on link click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('open');
+            });
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
