@@ -1,11 +1,16 @@
+import sys
+import os
+
+# Adiciona o diretório raiz do projeto ao sys.path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from fastapi import FastAPI, Request, Depends, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
-import models
-import database 
-from database import SessionLocal, engine
+from app.models import models
+from database.database import engine, SessionLocal
 from datetime import date
 
 models.Base.metadata.create_all(bind=engine)
@@ -13,7 +18,7 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="app/templates")
 
 
 # Dependency
@@ -37,6 +42,8 @@ async def subscribe(
     sobrenome: str = Form(...),
     telefone: str = Form(...),
     data_nascimento: date = Form(...),
+    desafio: str = Form(...),
+    
     db: Session = Depends(get_db),
 ):
     new_lead = models.Lead(
@@ -45,6 +52,7 @@ async def subscribe(
         sobrenome=sobrenome,
         telefone=telefone,
         data_nascimento=data_nascimento,
+        desafio=desafio
     )
     db.add(new_lead)
     db.commit()
